@@ -19,17 +19,20 @@ This script automates the installation and management of a Nwaku node, making it
 - At least 50GB free disk space
 - Sepolia testnet RPC URL (e.g., from Infura)
 - Testnet private key with some Sepolia ETH
+- Sepolia faucet at least 0.6
 
 ## Quick Installation
 
 Choose one of these methods to install:
 
 ### Method 1: Using curl
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Galkurta/Nwaku/main/nwaku.sh -o nwaku.sh && chmod +x nwaku.sh && sudo ./nwaku.sh
 ```
 
 ### Method 2: Using wget
+
 ```bash
 wget https://raw.githubusercontent.com/Galkurta/Nwaku/main/nwaku.sh && chmod +x nwaku.sh && sudo ./nwaku.sh
 ```
@@ -39,24 +42,29 @@ wget https://raw.githubusercontent.com/Galkurta/Nwaku/main/nwaku.sh && chmod +x 
 The script provides an interactive menu with the following options:
 
 1. **Install Prerequisites**
+
    - Updates system packages
    - Installs required dependencies
    - Configures firewall rules
 
 2. **Install Docker**
+
    - Installs Docker and Docker Compose
    - Sets up Docker environment
 
 3. **Install Nwaku Node**
+
    - Clones Nwaku repository
    - Configures environment settings
    - Sets up initial node configuration
 
 4. **Register RLN Membership**
+
    - Optional step for message relay capabilities
    - Requires Sepolia ETH for staking
 
 5. **Set Storage Allocation**
+
    - Configure node storage settings
    - Set retention policies
 
@@ -73,6 +81,7 @@ During installation, you'll need to provide:
 - RLN membership password (min. 8 characters)
 
 Optional advanced settings:
+
 - Custom Nwaku image
 - Node key
 - Domain
@@ -82,21 +91,25 @@ Optional advanced settings:
 ## Management Commands
 
 ### Update Node
+
 ```bash
 # Select option 7 from menu
 ```
 
 ### Restart Node
+
 ```bash
 # Select option 8 from menu
 ```
 
 ### Shutdown Node
+
 ```bash
 # Select option 9 from menu
 ```
 
 ### Delete Node
+
 ```bash
 # Select option 10 from menu
 ```
@@ -104,6 +117,7 @@ Optional advanced settings:
 ## Testing Your Node
 
 ### Send Test Message
+
 ```bash
 curl -X POST "http://127.0.0.1:8645/relay/v1/auto/messages" \
  -H "content-type: application/json" \
@@ -111,17 +125,20 @@ curl -X POST "http://127.0.0.1:8645/relay/v1/auto/messages" \
 ```
 
 ### Get Messages
+
 ```bash
 curl -X GET "http://127.0.0.1:8645/store/v1/messages?contentTopics=%2Fmy-app%2F2%2Fchatroom-1%2Fproto&pageSize=50&ascending=true" \
  -H "accept: application/json"
 ```
 
 ### Check Node Version
+
 ```bash
 curl http://127.0.0.1:8645/debug/v1/version
 ```
 
 ### Check Node Info
+
 ```bash
 curl http://127.0.0.1:8645/debug/v1/info
 ```
@@ -131,11 +148,13 @@ curl http://127.0.0.1:8645/debug/v1/info
 ### Common Issues
 
 1. **Docker Installation Fails**
+
    - Ensure your system meets the prerequisites
    - Check internet connectivity
    - Try running `sudo apt update` before installation
 
 2. **RLN Registration Fails**
+
    - Verify you have sufficient Sepolia ETH
    - Check your RPC URL is valid
    - Ensure private key is entered correctly
@@ -148,6 +167,7 @@ curl http://127.0.0.1:8645/debug/v1/info
 ### Support
 
 If you encounter any issues:
+
 1. Check the logs
 2. Refer to [Nwaku Documentation](https://docs.waku.org/)
 3. Open an issue on GitHub
