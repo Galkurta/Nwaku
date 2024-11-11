@@ -202,7 +202,7 @@ start_nwaku() {
 show_menu() {
     clear
     show_banner
-    echo "                              MAIN MENU"
+    echo "                  MAIN MENU"
     echo "============================================"
     echo "1. Install Prerequisites"
     echo "2. Install Docker (if not installed)"
